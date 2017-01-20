@@ -3,6 +3,7 @@ using System.Collections;
 
 public class DistructBuilding : MonoBehaviour {
     public float BuildingHealth = 0;
+    public GameObject prefab;
     public GameObject Box; 
     void Start ()
     {
@@ -26,6 +27,8 @@ public class DistructBuilding : MonoBehaviour {
         if(!Box.GetComponent<Rigidbody>())
         {
             Box.AddComponent<Rigidbody>();
+            GameObject smoke = (GameObject)Instantiate(prefab, Box.transform.position, Box.transform.rotation);
+            Destroy(smoke, 2.0f);
         }
     }
     void RemoveRigidBody()
